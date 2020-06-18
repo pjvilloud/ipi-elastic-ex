@@ -11,17 +11,29 @@ Voici la marche à suivre pour mettre en place votre suite Elastic (essai gratui
 
 - Se connecter sur https://www.elastic.co/fr/cloud/
 - Renseigner votre email dans l'espace *Elasticsearch Service* et cliquer sur **Essai**
+<img src="img/escloud1.PNG" alt="drawing" width="300"/>
+
 - Sur l'écran suivant, répondez *Other* à la question **What is your evaluation goal during the trial?** et indiquer dans le champ texte *Formation*. Cliquer sur **Submit**
+<img src="img/escloud2.PNG" alt="drawing" width="350"/>
+
 - Sur l'écran suivant, répondez *Observability...* à la question **What is your primray use case?**. Cliquer sur **Submit**
+<img src="img/escloud3.PNG" alt="drawing" width="350"/>
+
 - Cliquer sur le lien reçu dans l'email de validation afin de valider votre email. On vous demandera alors de spécifier un mot de passe.
 - Vous serez ensuite directement connecté sur Elastic Cloud. Vous pouvez maintenant cliquer sur **Start your free trial**
+<img src="img/escloud4.PNG" alt="drawing" width="900"/>
+
 - Renseigner les champs comme dans la capture ci-dessous (en indiquant un nom de déploiement qui vous correspond) et cliquer sur **Customize deployment**
+<img src="img/escloud5.PNG" alt="drawing" width="900"/>
+
 - Laisser tous les paramètres par défaut mais cliquer sur *User setting overrides* dans la section **Data** afin d'ajouter dans la zone de texte révélée les lignes suivantes : 
 ```yaml
 http.cors.enabled: true
 http.cors.allow-origin: "*"
 http.cors.allow-credentials: true
 ```
+<img src="img/escloud6.PNG" alt="drawing" width="900"/>
+
 - Cliquer ensuite sur **Create deployment** et attendez quelques minutes que le processus de déploiement soit effectué.
 - Récupérer et mettre de côté le username/password indiqué
 
