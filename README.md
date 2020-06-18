@@ -48,6 +48,8 @@ Télécharger FileBeat à l'adresse suivante et décompresser l'archive sur votr
 - Pour Windows : https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.7.1-windows-x86_64.zip
 - Pour Linux : https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.7.1-linux-x86_64.tar.gz
 
+Procédure complète d'installation : https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation.html
+
 ### HeartBeat
 
 Télécharger HeartBeat à l'adresse suivante et décompresser l'archive sur votre machine : 
