@@ -3,7 +3,7 @@ TP pour le cours sur la suite Elastic
 
 ## Création, installation et configuration de base des environnements
 
-Afin de ménager vos machines, et afin de pouvoir accéder facilement à vos services, nous allons utiliser certains services de la suite Elastic en mode SaaS (Software as a Service) hébergé directement chez AWS via Elastic Cloud.
+Afin de ménager vos machines, et afin de pouvoir accéder facilement à vos services, nous allons utiliser certains services de la suite Elastic en mode SaaS (Software as a Service) hébergé directement chez AWS via Elastic Cloud. Nous aurons besoin de PostMan (ou équivalent) ainsi que d'un environnement Java (IDE + JDK >= 11).
 
 ### Elastic Cloud
 
@@ -37,12 +37,12 @@ Télécharger FileBeat à l'adresse suivante et décompresser l'archive sur votr
 
 ### HeartBeat
 
-Télécharger FileBeat à l'adresse suivante et décompresser l'archive sur votre machine : 
+Télécharger HeartBeat à l'adresse suivante et décompresser l'archive sur votre machine : 
 - Pour Windows : https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-7.7.1-windows-x86_64.zip
 - Pour Linux : https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.7.1-linux-x86_64.tar.gz
 
 ### MetricBeat
 
-Télécharger FileBeat à l'adresse suivante et décompresser l'archive sur votre machine : 
+Télécharger MetricBeat à l'adresse suivante et décompresser l'archive sur votre machine : 
 - Pour Windows : https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.7.1-windows-x86_64.zip
 - Pour Linux : https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.7.1-linux-x86_64.tar.gz
