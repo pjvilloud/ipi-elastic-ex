@@ -31,6 +31,7 @@ Voici la marche à suivre pour mettre en place votre suite Elastic (essai gratui
 http.cors.enabled: true
 http.cors.allow-origin: "*"
 http.cors.allow-credentials: true
+http.cors.allow-headers: "X-Requested-With, Content-Type, Content-Length, Authorization"
 ```
 <img src="img/escloud6.PNG" alt="drawing" width="900"/>
 
