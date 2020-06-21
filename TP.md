@@ -193,3 +193,15 @@ Sont-ils corrects ?
 }
 ```
 Réindexer les données de tous les députés et faire une recherche sur le prénom "Sandra". Que constatez-vous ?
+
+## Aggrégations
+
+1. Récuperer le nombre de députés de sexe féminin et de sexe masculin en une requête
+
+1. Regrouper les députés en fonction du nombre de semaine de présence, par tranches de 5 semaines.
+
+1. Récupérer les députés maladivement timides (0 questions orales, 0 interventions courtes, 0 interventions longues)
+
+1. Regrouper les députés par tranche d'âge (tous les 5 ans)
+
+
