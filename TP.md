@@ -119,3 +119,5 @@ Sont-ils corrects ?
 
 1. Rechercher les députés en vert sur l'image suivante : 
 <img src="img/numhemicycle.jpg" alt="drawing" width="900"/>
+
+1. Rechercher les députés sortants
