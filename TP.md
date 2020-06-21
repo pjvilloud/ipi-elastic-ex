@@ -99,7 +99,7 @@ Sont-ils corrects ?
 
 1. Indexer en masse tous les députés en utilisant le fichier `nosdeputes.fr_deputes_2020-06-16.bulk.json`. Analyser la réponse de votre requête pour vérifier s'il y a des erreurs. Essayer de récupérer en une requête les documents d'id `578`, `420`, `327`, `246`, `119` et `12`
 
-## Recherche
+## Recherche stricte
 
 1. Effectuer la requête renvoyant tous les résultats des index `depute` et `people`. Vérifier que le nombre de résultats renvoyés semble correct.
 
@@ -121,3 +121,75 @@ Sont-ils corrects ?
 <img src="img/numhemicycle.jpg" alt="drawing" width="900"/>
 
 1. Rechercher les députés sortants
+
+## Recherche floue/intervalle
+
+1. Rechercher le nom *Katabi* en activant la recherche floue. Constatez les résultats obtenus.
+
+1. Rechercher les députés qui ont 3 mandats ou plus.
+
+## Bonus
+
+1. Supprimer l'index `depute` et créer le mapping suivant :
+```json
+{
+    "mappings": {
+        "properties": {
+            "sexe": {
+                "type": "keyword"
+            },
+            "date_naissance": {
+                "type": "date",
+                "format": "yyyy-MM-dd"
+            },
+            "mandat_debut": {
+                "type": "date",
+                "format": "yyyy-MM-dd"
+            },
+            "mandat_fin": {
+                "type": "date",
+                "format": "yyyy-MM-dd"
+            },
+            "num_deptmt": {
+                "type": "keyword"
+            },
+            "nom_circo": {
+                "type": "keyword"
+            },
+            "groupe_sigle": {
+                "type": "keyword"
+            },
+            "parti_ratt_financier": {
+                "type": "keyword"
+            },
+            "prenom": {
+                "type": "text",
+                "analyzer": "phoneticAnalyzer"
+            }
+        }
+    },
+    "settings": {
+        "index": {
+            "analysis": {
+                "analyzer": {
+                    "phoneticAnalyzer": {
+                        "tokenizer": "standard",
+                        "filter": [
+                            "lowercase",
+                            "my_metaphone"
+                        ]
+                    }
+                },
+                "filter": {
+                    "my_metaphone": {
+                        "type": "phonetic",
+                        "encoder": "metaphone",
+                        "replace": false
+                    }
+                }
+            }
+        }
+    }
+}
+```
+Réindexer les données de tous les députés et faire une recherche sur le prénom "Sandra". Que constatez-vous ?
