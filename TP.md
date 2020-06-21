@@ -196,12 +196,16 @@ Réindexer les données de tous les députés et faire une recherche sur le pré
 
 ## Aggrégations
 
-1. Récuperer le nombre de députés de sexe féminin et de sexe masculin en une requête
+1. Récuperer le nombre de députés de sexe féminin et de sexe masculin en une requête.
 
 1. Regrouper les députés en fonction du nombre de semaine de présence, par tranches de 5 semaines.
 
-1. Récupérer les députés maladivement timides (0 questions orales, 0 interventions courtes, 0 interventions longues)
+1. Récupérer les députés maladivement timides (0 questions orales, 0 interventions courtes, 0 interventions longues).
 
-1. Regrouper les députés par tranche d'âge (tous les 5 ans)
+1. Regrouper les députés par tranche d'âge (tous les 5 ans).
 
+1. Regrouper les députés par parti politique, puis par groupe.
 
+1. Trouver en une requête, par parti, les 5 députés les moins présents, puis dans une autre requête les 5 députés les plus présents.
+
+1. Trouver l'âge moyen (date de naissance moyenne...) des députés, puis des députés de sexe féminin, puis des députés de sexe masculin.
