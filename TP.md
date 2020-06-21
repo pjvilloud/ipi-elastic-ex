@@ -98,3 +98,19 @@ Sont-ils corrects ?
 1. Récupérer le mapping de l'index `depute` et constater l'ajout du champ avec le type automatiquement défini.
 
 1. Indexer en masse tous les députés en utilisant le fichier `nosdeputes.fr_deputes_2020-06-16.bulk.json`. Analyser la réponse de votre requête pour vérifier s'il y a des erreurs. Essayer de récupérer en une requête les documents d'id `578`, `420`, `327`, `246`, `119` et `12`
+
+## Recherche
+
+1. Effectuer la requête renvoyant tous les résultats des index `depute` et `people`. Vérifier que le nombre de résultats renvoyés semble correct.
+
+1. Effectuer la requête renvoyant parmi les index `depute` et `people` les résultats contenant *Pierre* ou *Paul*. Analyser la réponse de votre requête. Comment sont classés les résultats ? Combien de résultats ont été trouvés ? Combien de résultats sont effectivement renvoyés ? 
+
+1. Refaire la requête en renvoyant les 20 résultats suivants.
+
+1. Effectuer une recherche renvoyant les députés dont le nom contient *Paul* ou *Pierre*.
+
+1. Effectuer une recherche renvoyant les députés de la circonscription de la Loire.
+
+1. Effectuer une recherche renvoyant les députés de la circonscription de la Loire ou de l'Isère. Analyser la réponse et essayer de trouver la différence par rapport à la question 4.
+
+1. Reprendre l'énoncé de la question 2 mais chercher uniquement dans le nom ou le prénom du député.
