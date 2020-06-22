@@ -209,3 +209,39 @@ Réindexer les données de tous les députés et faire une recherche sur le pré
 1. Trouver en une requête, par parti, les 5 députés les moins présents, puis dans une autre requête les 5 députés les plus présents.
 
 1. Trouver l'âge moyen (date de naissance moyenne...) des députés, puis des députés de sexe féminin, puis des députés de sexe masculin.
+
+# Kibana
+
+## Discover
+
+1. Effectuer diverses recherches en mode Full text
+
+1. Filtrer les résultats par groupe *MODEM*
+
+1. N'afficher que le nom et le prénom
+
+## Canvas
+
+Créer un nouveau workpard et faire figurer les éléments suivants (ne prendre en compte que les députés actifs)
+
+- Nombre de rapports écrits au total
+- Nombre de questions orales posées au total
+- Nombre de députés 
+- Nombre d'interventions (courtes + longues) 
+- Nombre de propositions écrites (courtes + longues) 
+- Age moyen
+- Répartition Homme/Femme
+- Répartition par parti (groupe_sigle)
+- Courbe des années de naissance
+- Filtre Homme/Femme
+- Filtre par parti (groupe_sigle)
+- "Les timides" : 0 questions, 0 interventions et 0 interventions courtes. Affichier leur image (utiliser l'élément Markdown)
+. Image en markdown `![texte](url "text hover")`. Url de l'image sous la forme : `https://nosdeputes.fr/depute/photo/{{slug}}/150` avec `slug` qui est contenu dans les documents
+- "Le bavard" : le plus d'interventions en hemicycle
+- L'"hyperactif" : le plus de propositions écrites, amendements_proposes et rapports
+- Celui "qui a piscine" : moins de semaine de présence
+
+Faire un export en PDF
+
+## Dashboard
+
