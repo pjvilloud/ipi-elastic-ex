@@ -131,6 +131,7 @@
 ## Bonus
 
 1. Supprimer l'index `depute` et créer le mapping suivant :
+
     	```json
     	{
 	    "mappings": {
