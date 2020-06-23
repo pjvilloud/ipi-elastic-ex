@@ -261,10 +261,10 @@ Le document créé sera sous la forme :
 ```json
 {
     "ts": "2020-06-17 08:19:36",
-    "level": "INFO"
+    "level": "INFO",
     "jobName": "importDeputesActiviteFileToES",
-    "jobId": "1"
-    "logKey": "WRITE_DEPUTES_ACTIVITE"
+    "jobId": "1",
+    "logKey": "WRITE_DEPUTES_ACTIVITE",
     "value": "50"
 }
 ```
