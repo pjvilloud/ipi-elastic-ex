@@ -6,84 +6,84 @@
 
     ```json
     {
-    "id": 1,
-    "nom": "Cédric Roussel",
-    "nom_de_famille": "Roussel",
-    "prenom": "Cédric",
-    "sexe": "H",
-    "date_naissance": "1872-10-10",
-    "lieu_naissance": "Brest (Finistère)",
-    "num_deptmt": "06",
-    "nom_circo": "Alpes-Maritimes",
-    "num_circo": 3,
-    "mandat_debut": "2017-06-21",
-    "groupe_sigle": "LREM",
-    "parti_ratt_financier": "La République en Marche",
-    "sites_web": [
-        {
-            "site": "http://cedricroussel.en-marche.fr"
-        },
-        {
-            "site": "https://twitter.com/CedricRoussel06"
-        },
-        {
-            "site": "https://fr-fr.facebook.com/CRoussel06/"
-        },
-        {
-            "site": "https://www.cedricroussel.fr"
-        }
-    ],
-    "emails": [
-        {
-            "email": "cedric.roussel@assemblee-nationale.fr"
-        }
-    ],
-    "adresses": [
-        {
-            "adresse": "Assemblée nationale, 126 Rue de l'Université, 75355 Paris 07 SP"
-        }
-    ],
-    "collaborateurs": [
-        {
-            "collaborateur": "Mme Julie Phan-Pérain"
-        },
-        {
-            "collaborateur": "Mme Caroline Puisségur-Ripet"
-        },
-        {
-            "collaborateur": "M. Jules Plat"
-        }
-    ],
-    "autres_mandats": [],
-    "anciens_autres_mandats": [],
-    "anciens_mandats": [
-        {
-            "mandat": "21/06/2017 /  / "
-        }
-    ],
-    "profession": "Conseiller en gestion de patrimoine indépendant",
-    "place_en_hemicycle": "309",
-    "url_an": "http://www2.assemblee-nationale.fr/deputes/fiche/OMC_PA718902",
-    "id_an": "718902",
-    "slug": "cedric-roussel",
-    "url_nosdeputes": "https://www.nosdeputes.fr/cedric-roussel",
-    "url_nosdeputes_api": "https://www.nosdeputes.fr/cedric-roussel/json",
-    "nb_mandats": 1,
-    "twitter": "CedricRoussel06"
+	    "id": 1,
+	    "nom": "Cédric Roussel",
+	    "nom_de_famille": "Roussel",
+	    "prenom": "Cédric",
+	    "sexe": "H",
+	    "date_naissance": "1872-10-10",
+	    "lieu_naissance": "Brest (Finistère)",
+	    "num_deptmt": "06",
+	    "nom_circo": "Alpes-Maritimes",
+	    "num_circo": 3,
+	    "mandat_debut": "2017-06-21",
+	    "groupe_sigle": "LREM",
+	    "parti_ratt_financier": "La République en Marche",
+	    "sites_web": [
+		{
+		    "site": "http://cedricroussel.en-marche.fr"
+		},
+		{
+		    "site": "https://twitter.com/CedricRoussel06"
+		},
+		{
+		    "site": "https://fr-fr.facebook.com/CRoussel06/"
+		},
+		{
+		    "site": "https://www.cedricroussel.fr"
+		}
+	    ],
+	    "emails": [
+		{
+		    "email": "cedric.roussel@assemblee-nationale.fr"
+		}
+	    ],
+	    "adresses": [
+		{
+		    "adresse": "Assemblée nationale, 126 Rue de l'Université, 75355 Paris 07 SP"
+		}
+	    ],
+	    "collaborateurs": [
+		{
+		    "collaborateur": "Mme Julie Phan-Pérain"
+		},
+		{
+		    "collaborateur": "Mme Caroline Puisségur-Ripet"
+		},
+		{
+		    "collaborateur": "M. Jules Plat"
+		}
+	    ],
+	    "autres_mandats": [],
+	    "anciens_autres_mandats": [],
+	    "anciens_mandats": [
+		{
+		    "mandat": "21/06/2017 /  / "
+		}
+	    ],
+	    "profession": "Conseiller en gestion de patrimoine indépendant",
+	    "place_en_hemicycle": "309",
+	    "url_an": "http://www2.assemblee-nationale.fr/deputes/fiche/OMC_PA718902",
+	    "id_an": "718902",
+	    "slug": "cedric-roussel",
+	    "url_nosdeputes": "https://www.nosdeputes.fr/cedric-roussel",
+	    "url_nosdeputes_api": "https://www.nosdeputes.fr/cedric-roussel/json",
+	    "nb_mandats": 1,
+	    "twitter": "CedricRoussel06"
     }
     ```
 
 1. Effectuer la requête permettant de récupérer le document précédemment indexé et analyser la réponse du serveur.
 
 1. Effectuer la requête pour récupérer le mapping de l'index `depute` généré automatiquement et remarquer le type choisi automatiquement par Elasticsearch pour les champs 
-- `groupe_sigle`
-- `num_dptmt`
-- `sexe`
-- `nom_circo`
-- `parti_ratt_financier`
-- `date_naissance`
+	- `groupe_sigle`
+	- `num_dptmt`
+	- `sexe`
+	- `nom_circo`
+	- `parti_ratt_financier`
+	- `date_naissance`
 
-Sont-ils corrects ?
+    	Sont-ils corrects ?
 
 1. Effectuer la requête pour supprimer le document précédemment indexé. Vérifier qu'en essayant de le récupérer, on obtient bien une erreur.
 
@@ -118,7 +118,7 @@ Sont-ils corrects ?
 1. Rechercher les députés qui ont au moins une femme parmi leur collaborateurs
 
 1. Rechercher les députés en vert sur l'image suivante : 
-<img src="img/numhemicycle.jpg" alt="drawing" width="900"/>
+	<img src="img/numhemicycle.jpg" alt="drawing" width="900"/>
 
 1. Rechercher les députés sortants
 
@@ -131,67 +131,67 @@ Sont-ils corrects ?
 ## Bonus
 
 1. Supprimer l'index `depute` et créer le mapping suivant :
-```json
-{
-    "mappings": {
-        "properties": {
-            "sexe": {
-                "type": "keyword"
-            },
-            "date_naissance": {
-                "type": "date",
-                "format": "yyyy-MM-dd"
-            },
-            "mandat_debut": {
-                "type": "date",
-                "format": "yyyy-MM-dd"
-            },
-            "mandat_fin": {
-                "type": "date",
-                "format": "yyyy-MM-dd"
-            },
-            "num_deptmt": {
-                "type": "keyword"
-            },
-            "nom_circo": {
-                "type": "keyword"
-            },
-            "groupe_sigle": {
-                "type": "keyword"
-            },
-            "parti_ratt_financier": {
-                "type": "keyword"
-            },
-            "prenom": {
-                "type": "text",
-                "analyzer": "phoneticAnalyzer"
-            }
-        }
-    },
-    "settings": {
-        "index": {
-            "analysis": {
-                "analyzer": {
-                    "phoneticAnalyzer": {
-                        "tokenizer": "standard",
-                        "filter": [
-                            "lowercase",
-                            "my_metaphone"
-                        ]
-                    }
-                },
-                "filter": {
-                    "my_metaphone": {
-                        "type": "phonetic",
-                        "encoder": "metaphone",
-                        "replace": false
-                    }
-                }
-            }
-        }
-    }
-}
-```
+    	```json
+    	{
+	    "mappings": {
+		"properties": {
+		    "sexe": {
+			"type": "keyword"
+		    },
+		    "date_naissance": {
+			"type": "date",
+			"format": "yyyy-MM-dd"
+		    },
+		    "mandat_debut": {
+			"type": "date",
+			"format": "yyyy-MM-dd"
+		    },
+		    "mandat_fin": {
+			"type": "date",
+			"format": "yyyy-MM-dd"
+		    },
+		    "num_deptmt": {
+			"type": "keyword"
+		    },
+		    "nom_circo": {
+			"type": "keyword"
+		    },
+		    "groupe_sigle": {
+			"type": "keyword"
+		    },
+		    "parti_ratt_financier": {
+			"type": "keyword"
+		    },
+		    "prenom": {
+			"type": "text",
+			"analyzer": "phoneticAnalyzer"
+		    }
+		}
+	    },
+	    "settings": {
+		"index": {
+		    "analysis": {
+			"analyzer": {
+			    "phoneticAnalyzer": {
+				"tokenizer": "standard",
+				"filter": [
+				    "lowercase",
+				    "my_metaphone"
+				]
+			    }
+			},
+			"filter": {
+			    "my_metaphone": {
+				"type": "phonetic",
+				"encoder": "metaphone",
+				"replace": false
+			    }
+			}
+		    }
+		}
+	    }
+    	}
+	```
 Réindexer les données de tous les députés et faire une recherche sur le prénom "Sandra". Que constatez-vous ?
 
 ## Aggrégations
@@ -214,13 +214,13 @@ Récupérer (Fork ou Download) et ouvrir le projet Java situé à l'url https://
 
 1. Intègre les fichiers JSON de nosdeputes.fr de type *activite* qui regroupe l'activité d'un mois donné pour tous les députés.
 
-Ce projet possède également une application web permettant de lancer les batchs et d'accéder en lecture à l'index Elasticsearch `depute`. Voir `BatchController`.
+	Ce projet possède également une application web permettant de lancer les batchs et d'accéder en lecture à l'index Elasticsearch `depute`. Voir `BatchController`.
 
-Modifier la classe BatchApplication en indiquant votre serveur Elasticsearch et votre user/mot de passe
+	Modifier la classe BatchApplication en indiquant votre serveur Elasticsearch et votre user/mot de passe
 
-```java
-@Bean
-public RestHighLevelClient client() {
+	```java
+	@Bean
+	public RestHighLevelClient client() {
 		ClientConfiguration clientConfiguration
 				= ClientConfiguration.builder()
 				.connectedTo("elasticsearch.eu-west-2.aws.cloud.es.io:9243")
@@ -229,8 +229,8 @@ public RestHighLevelClient client() {
 				.build();
 
 	return RestClients.create(clientConfiguration).rest();
-}
-```
+	}
+	```
 
 ## FileBeat
 
@@ -324,25 +324,25 @@ Exécuter un à un les appels suivants : en attendant bien la fin de chaque requ
 
 Créer un nouveau workpard et faire figurer les éléments suivants (ne prendre en compte que les députés actifs)
 
-- Nombre de rapports écrits au total
-- Nombre de questions orales posées au total
-- Nombre de députés 
-- Nombre d'interventions (courtes + longues) 
-- Nombre de propositions écrites (courtes + longues) 
-- Age moyen
-- Répartition Homme/Femme
-- Répartition par parti (groupe_sigle)
-- Courbe des années de naissance
-- Filtre Homme/Femme
-- Filtre par parti (groupe_sigle)
+1. Nombre de rapports écrits au total
+1. Nombre de questions orales posées au total
+1. Nombre de députés 
+1. Nombre d'interventions (courtes + longues) 
+1. Nombre de propositions écrites (courtes + longues) 
+1. Age moyen
+1. Répartition Homme/Femme
+1. Répartition par parti (groupe_sigle)
+1. Courbe des années de naissance
+1. Filtre Homme/Femme
+1. Filtre par parti (groupe_sigle)
 
 Bonus
 
-- "Les timides" : 0 questions, 0 interventions et 0 interventions courtes. Affichier leur image (utiliser l'élément Markdown)
+1. "Les timides" : 0 questions, 0 interventions et 0 interventions courtes. Affichier leur image (utiliser l'élément Markdown)
 . Image en markdown `![texte](url "text hover")`. Url de l'image sous la forme : `https://nosdeputes.fr/depute/photo/{{slug}}/150` avec `slug` qui est contenu dans les documents
-- "Le bavard" : le plus d'interventions en hemicycle
-- L'"hyperactif" : le plus de propositions écrites, amendements_proposes et rapports
-- Celui "qui a piscine" : moins de semaine de présence
+1. "Le bavard" : le plus d'interventions en hemicycle
+1. L'"hyperactif" : le plus de propositions écrites, amendements_proposes et rapports
+1. Celui "qui a piscine" : moins de semaine de présence
 
 Faire un export en PDF ou une capture d'écran
 
