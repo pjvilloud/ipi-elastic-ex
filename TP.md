@@ -193,7 +193,8 @@
 	    }
     	}
 	```
-Réindexer les données de tous les députés et faire une recherche sur le prénom "Sandra". Que constatez-vous ?
+
+1. Réindexer les données de tous les députés et faire une recherche sur le prénom "Sandra". Que constatez-vous ?
 
 ## Aggrégations
 
