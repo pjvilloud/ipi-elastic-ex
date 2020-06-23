@@ -194,21 +194,131 @@ Sont-ils corrects ?
 ```
 Réindexer les données de tous les députés et faire une recherche sur le prénom "Sandra". Que constatez-vous ?
 
-## Aggrégations
+## Aggrégations (Partie 1)
 
 1. Récuperer le nombre de députés de sexe féminin et de sexe masculin en une requête.
-
-1. Regrouper les députés en fonction du nombre de semaine de présence, par tranches de 5 semaines.
-
-1. Récupérer les députés maladivement timides (0 questions orales, 0 interventions courtes, 0 interventions longues).
 
 1. Regrouper les députés par tranche d'âge (tous les 5 ans).
 
 1. Regrouper les députés par parti politique, puis par groupe.
 
+1. Trouver l'âge moyen (date de naissance moyenne...) des députés, puis des députés de sexe féminin, puis des députés de sexe masculin.
+
+# Beats
+
+## Pré-requis
+
+Ouvrir le projet Java situé dans le dossier `batch` avec votre IDE. Ce projet contient 2 batchs Spring batch : 
+
+1. Intègre les fichiers JSON de nosdeputes.fr de type *synthèse* qui regroupe l'activité des 12 derniers mois des députés actifs
+
+1. Intègre les fichiers JSON de nosdeputes.fr de type *activite* qui regroupe l'activité d'un mois donné pour tous les députés.
+
+Ce projet possède également une application web permettant de lancer les batchs et d'accéder en lecture à l'index Elasticsearch `depute`. Voir `BatchController`.
+
+Modifier la classe BatchApplication en indiquant votre serveur Elasticsearch et votre user/mot de passe
+
+```java
+    @Bean
+	public RestHighLevelClient client() {
+		ClientConfiguration clientConfiguration
+				= ClientConfiguration.builder()
+				.connectedTo("elasticsearch.eu-west-2.aws.cloud.es.io:9243")
+				.usingSsl()
+				.withBasicAuth("elastic", "password")
+				.build();
+
+		return RestClients.create(clientConfiguration).rest();
+	}
+```
+
+## FileBeat
+
+L'application web Java stocke les logs Tomcat dans le répertoire `tomcat/logs/`. Installer, configurer et lancer le service FileBeats grâce à https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-getting-started.html (au moins jusqu'à l'étape 5) pour qu'il envoie les logs Tomcat à ElasticSearch. 
+
+Lancer l'application `BatchsApplication` et exécuter dans un navigateur ou dans PostMan une requête `GET` sur l'url `localhost:8080/general?filename=nosdeputes.fr_synthese_2020-06-23.json`. Vérifier la bonne exécution du batch 
+
+Vérifier dans Kibana (Dashboards spécialisés Apache Filebeat) que les données sont bien visibles.
+
+## MetricsBeat
+
+Suivre la procédure d'installation de MetricBeats sur https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-getting-started.html (au moins jusqu'à l'étape 5) et démarrer le service MetricBeats sur votre machine.
+
+## HeartBeat
+
+Suivre la procédure d'installation de HeartBeat sur https://www.elastic.co/guide/en/beats/heartbeat/current/heartbeat-getting-started.html (au moins jusqu'à l'étape 5). Configurer HeartBeat pour qu'il surveille l'URL `http://localhost:8080/up` et lancer le service sur votre machine.
+
+## Aggrégations (partie 2)
+
+1. Regrouper les députés en fonction du nombre de semaine de présence, par tranches de 5 semaines.
+
+1. Récupérer les députés maladivement timides (0 questions orales, 0 interventions courtes, 0 interventions longues).
+
 1. Trouver en une requête, par parti, les 5 députés les moins présents, puis dans une autre requête les 5 députés les plus présents.
 
-1. Trouver l'âge moyen (date de naissance moyenne...) des députés, puis des députés de sexe féminin, puis des députés de sexe masculin.
+## Logstash 
+
+Paramétrer Filebeat (dans un nouveau pipeline) pour qu'il récupère les logs situés dans le fichier `info.log` pour les envoyer à Logstash. 
+Paramétrer Logstash pour qu'il récupère les données issues de FileBeat et envoie dans Elasticsearch les logs parsés (utiliser un filtre `dissect` https://www.elastic.co/guide/en/logstash/current/plugins-filters-dissect.html).
+
+Une ligne de log ressemble à 
+`2020-06-17 08:19:36 - INFO  - importDeputesActiviteFileToES:1:WRITE_DEPUTES_ACTIVITE:50`
+
+Le document créé sera sous la forme : 
+
+```json
+{
+    "ts": "2020-06-17 08:19:36",
+    "level": "INFO"
+    "jobName": "importDeputesActiviteFileToES",
+    "jobId": "1"
+    "logKey": "WRITE_DEPUTES_ACTIVITE"
+    "value": "50"
+}
+```
+
+Lancer votre application
+
+Exécuter un à un les appels suivants : en attendant bien la fin de chaque requête avant de lancer la suivante
+
+http://localhost:8080/activite?filename=nosdeputes.fr_201706_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201707_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201708_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201709_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201710_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201711_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201712_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201801_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201802_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201803_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201804_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201805_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201806_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201807_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201808_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201809_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201810_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201811_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201812_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201901_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201902_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201903_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201904_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201905_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201906_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201907_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201908_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201909_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201910_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201911_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_201912_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_202001_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_202002_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_202003_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_202004_stats_deputes.json
+http://localhost:8080/activite?filename=nosdeputes.fr_202005_stats_deputes.json
+
+## Aggrégations (partie 3)
 
 # Kibana
 
@@ -235,13 +345,34 @@ Créer un nouveau workpard et faire figurer les éléments suivants (ne prendre 
 - Courbe des années de naissance
 - Filtre Homme/Femme
 - Filtre par parti (groupe_sigle)
+
+Bonus
+
 - "Les timides" : 0 questions, 0 interventions et 0 interventions courtes. Affichier leur image (utiliser l'élément Markdown)
 . Image en markdown `![texte](url "text hover")`. Url de l'image sous la forme : `https://nosdeputes.fr/depute/photo/{{slug}}/150` avec `slug` qui est contenu dans les documents
 - "Le bavard" : le plus d'interventions en hemicycle
 - L'"hyperactif" : le plus de propositions écrites, amendements_proposes et rapports
 - Celui "qui a piscine" : moins de semaine de présence
 
-Faire un export en PDF
+Faire un export en PDF ou une capture d'écran
 
 ## Dashboard
+
+TODO
+
+## Metrics
+
+Vérifier la présence de données sur cet écran (issue de MetricsBeat)
+
+## Uptime
+
+Vérifier la présence de données sur cet écran (issue de HeartBeat)
+
+## APM
+
+Suivre le tutoriel APM depuis Kibana et configurer votre goal Spring Boot pour ajouter dans `VM options` les options affichées. Cela doit ressembler à `-javaagent:elastic-apm-agent-1.17.0.jar -Delastic.apm.service_name=batch -Delastic.apm.server_urls=https://VOTREURLELASTIC.aws.cloud.es.io:443 -Delastic.apm.secret_token=VOTRETOKENSECRET -Delastic.apm.application_packages=com.ipiecoles.java.elastic`)
+
+Relancer votre application
+
+Exécuter des requêtes de type `http://localhost:8080/deputes?page=1&size=10`. Essayer des valeurs incorrectes, des URLs qui n'existent pas et constater les résultats sur APM.
 
