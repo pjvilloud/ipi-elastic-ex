@@ -132,8 +132,8 @@
 
 1. Supprimer l'index `depute` et créer le mapping suivant :
 
-    	```json
-    	{
+	```json
+	{
 	    "mappings": {
 		"properties": {
 		    "sexe": {
@@ -191,7 +191,7 @@
 		    }
 		}
 	    }
-    	}
+	}
 	```
 
 1. Réindexer les données de tous les députés et faire une recherche sur le prénom "Sandra". Que constatez-vous ?
