@@ -4,8 +4,8 @@
 
 1. Indexer le document suivant (identifiant 1) dans un index que l'on nommera `depute`
 
-```json
-{
+    ```json
+    {
     "id": 1,
     "nom": "Cédric Roussel",
     "nom_de_famille": "Roussel",
@@ -70,8 +70,8 @@
     "url_nosdeputes_api": "https://www.nosdeputes.fr/cedric-roussel/json",
     "nb_mandats": 1,
     "twitter": "CedricRoussel06"
-}
-```
+    }
+    ```
 
 1. Effectuer la requête permettant de récupérer le document précédemment indexé et analyser la réponse du serveur.
 
@@ -194,7 +194,7 @@ Sont-ils corrects ?
 ```
 Réindexer les données de tous les députés et faire une recherche sur le prénom "Sandra". Que constatez-vous ?
 
-## Aggrégations (Partie 1)
+## Aggrégations
 
 1. Récuperer le nombre de députés de sexe féminin et de sexe masculin en une requête.
 
@@ -208,7 +208,7 @@ Réindexer les données de tous les députés et faire une recherche sur le pré
 
 ## Pré-requis
 
-Ouvrir le projet Java situé dans le dossier `batch` avec votre IDE. Ce projet contient 2 batchs Spring batch : 
+Récupérer (Fork ou Download) et ouvrir le projet Java situé à l'url https://github.com/pjvilloud/deputes-elastic-batch avec votre IDE. Ce projet contient 2 batchs Spring batch : 
 
 1. Intègre les fichiers JSON de nosdeputes.fr de type *synthèse* qui regroupe l'activité des 12 derniers mois des députés actifs
 
