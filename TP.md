@@ -219,8 +219,8 @@ Ce projet possède également une application web permettant de lancer les batch
 Modifier la classe BatchApplication en indiquant votre serveur Elasticsearch et votre user/mot de passe
 
 ```java
-    @Bean
-	public RestHighLevelClient client() {
+@Bean
+public RestHighLevelClient client() {
 		ClientConfiguration clientConfiguration
 				= ClientConfiguration.builder()
 				.connectedTo("elasticsearch.eu-west-2.aws.cloud.es.io:9243")
@@ -228,8 +228,8 @@ Modifier la classe BatchApplication en indiquant votre serveur Elasticsearch et 
 				.withBasicAuth("elastic", "password")
 				.build();
 
-		return RestClients.create(clientConfiguration).rest();
-	}
+	return RestClients.create(clientConfiguration).rest();
+}
 ```
 
 ## FileBeat
@@ -247,14 +247,6 @@ Suivre la procédure d'installation de MetricBeats sur https://www.elastic.co/gu
 ## HeartBeat
 
 Suivre la procédure d'installation de HeartBeat sur https://www.elastic.co/guide/en/beats/heartbeat/current/heartbeat-getting-started.html (au moins jusqu'à l'étape 5). Configurer HeartBeat pour qu'il surveille l'URL `http://localhost:8080/up` et lancer le service sur votre machine.
-
-## Aggrégations (partie 2)
-
-1. Regrouper les députés en fonction du nombre de semaine de présence, par tranches de 5 semaines.
-
-1. Récupérer les députés maladivement timides (0 questions orales, 0 interventions courtes, 0 interventions longues).
-
-1. Trouver en une requête, par parti, les 5 députés les moins présents, puis dans une autre requête les 5 députés les plus présents.
 
 ## Logstash 
 
@@ -281,8 +273,8 @@ Lancer votre application
 
 Exécuter un à un les appels suivants : en attendant bien la fin de chaque requête avant de lancer la suivante
 
-http://localhost:8080/activite?filename=nosdeputes.fr_201706_stats_deputes.json
-http://localhost:8080/activite?filename=nosdeputes.fr_201707_stats_deputes.json
+- http://localhost:8080/activite?filename=nosdeputes.fr_201706_stats_deputes.json
+- http://localhost:8080/activite?filename=nosdeputes.fr_201707_stats_deputes.json
 - http://localhost:8080/activite?filename=nosdeputes.fr_201708_stats_deputes.json
 - http://localhost:8080/activite?filename=nosdeputes.fr_201709_stats_deputes.json
 - http://localhost:8080/activite?filename=nosdeputes.fr_201710_stats_deputes.json
@@ -317,8 +309,6 @@ http://localhost:8080/activite?filename=nosdeputes.fr_201707_stats_deputes.json
 - http://localhost:8080/activite?filename=nosdeputes.fr_202003_stats_deputes.json
 - http://localhost:8080/activite?filename=nosdeputes.fr_202004_stats_deputes.json
 - http://localhost:8080/activite?filename=nosdeputes.fr_202005_stats_deputes.json
-
-## Aggrégations (partie 3)
 
 # Kibana
 
@@ -358,7 +348,23 @@ Faire un export en PDF ou une capture d'écran
 
 ## Dashboard
 
-TODO
+Créer un dashboard **Activité** et ajouter les visualisations suivantes : 
+
+1. Graphique (sous forme de courbe) présentant le nombre de semaines de présence moyen des députés. Expliquer les creux...
+
+1. Graphique (sous forme d'histogramme) présentant le nombre d'amendements proposés/signés/adoptés. Trouver la réforme des retraites...
+
+1. Graphique (sous forme de camembert) présentant le répartition des interventions longues par parti
+
+1. Graphique (sous forme de courbes) présentant le nombre des questions écrites au fur et a mesure du temps avec une courbe cumulative
+
+1. Graphique (sous forme de jauge) indiquant la somme des rapports soumis
+
+1. Graphique (sous forme d'histogramme) indiquant le nombre moyen de semaines de présence par parti.
+
+## Logs
+
+Aller sur l'interface Logs et afficher les logs issus de Lostash en ajoutant les colonnes définies dans le filtre Dissect.
 
 ## Metrics
 
