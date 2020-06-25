@@ -111,7 +111,7 @@
 
 1. Effectuer une recherche renvoyant les députés de la circonscription de la Loire.
 
-1. Effectuer une recherche renvoyant les députés de la circonscription de la Loire ou de l'Isère. Analyser la réponse et essayer de trouver la différence par rapport à la question 4.
+1. Effectuer une recherche renvoyant les députés de la circonscription de la Loire ou de l'Isère. ~~Analyser la réponse et essayer de trouver la différence par rapport à la question 4.~~
 
 1. Reprendre l'énoncé de la question 2 mais chercher uniquement dans le nom ou le prénom du député.
 
