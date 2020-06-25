@@ -87,7 +87,7 @@
 
 1. Effectuer la requête pour supprimer le document précédemment indexé. Vérifier qu'en essayant de le récupérer, on obtient bien une erreur.
 
-1. Effectuer une requête pour modifier le mapping de l'index `depute` en spécifiant le type `keyword` pour les champs `groupe_sigle`, `num_dptmt`, `sexe`, `nom_circo`, `parti_ratt_financier`
+1. Effectuer une requête pour modifier le mapping de l'index `depute` en spécifiant le type `keyword` pour les champs `groupe_sigle`, `num_dptmt`, `sexe`. On laisse `nom_circo`, `parti_ratt_financier` en automatique.
 
 1. Réindexer le document précédent et vérifier que tout est OK
 
