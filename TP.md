@@ -273,6 +273,24 @@ Le document créé sera sous la forme :
 
 Lancer votre application
 
+Créer l'index `activite` avec le mapping suivant : 
+
+```json
+{
+    "mappings": {
+        "properties": {
+            "groupe": {
+                "type": "keyword"
+            },
+            "date": {
+                "type": "date",
+                "format": "yyyyMM"
+            }
+        }
+    }
+}
+```
+
 Exécuter un à un les appels suivants : en attendant bien la fin de chaque requête avant de lancer la suivante
 
 - http://localhost:8080/activite?filename=nosdeputes.fr_201706_stats_deputes.json
