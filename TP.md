@@ -340,7 +340,7 @@ Créer un nouveau workpard et faire figurer les éléments suivants (ne prendre 
 
 Bonus
 
-1. "Les timides" : 0 questions, 0 interventions et 0 interventions courtes. Affichier leur image (utiliser l'élément Markdown)
+1. "Les timides" : 0 questions, 0 interventions et 0 interventions courtes. Afficher leur image (utiliser l'élément Markdown)
 . Image en markdown `![texte](url "text hover")`. Url de l'image sous la forme : `https://nosdeputes.fr/depute/photo/{{slug}}/150` avec `slug` qui est contenu dans les documents
 1. "Le bavard" : le plus d'interventions en hemicycle
 1. L'"hyperactif" : le plus de propositions écrites, amendements_proposes et rapports
