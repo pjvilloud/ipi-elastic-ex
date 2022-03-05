@@ -29,7 +29,7 @@ Voici la marche à suivre pour mettre en place votre suite Elastic (essai gratui
 <img src="img/escloud5.png" alt="drawing" width="900"/>
 
 - Ouvrez le menu à l'aide du bouton en haut à gauche et cliquer sur le bouton **Manage this deployment**.
-<img src="img/escloud6.png" alt="drawing" width="500"/>
+<img src="img/escloud6.png" alt="drawing" width="350"/>
 
 - Descendez jusqu'à la section **Instances** cliquer sur le bouton avec les 3 points pour sélectionner **Edit configuration**
 <img src="img/escloud7.png" alt="drawing" width="900"/>
@@ -44,7 +44,7 @@ http.cors.allow-origin: "*"
 http.cors.allow-credentials: true
 http.cors.allow-headers: "X-Requested-With, Content-Type, Content-Length, Authorization"
 ```
-<img src="img/escloud9.png" alt="drawing" width="500"/>
+<img src="img/escloud9.png" alt="drawing" width="900"/>
 
 ### Logstash
 
