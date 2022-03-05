@@ -9,32 +9,42 @@ Afin de ménager vos machines, et afin de pouvoir accéder facilement à vos ser
 
 Voici la marche à suivre pour mettre en place votre suite Elastic (essai gratuit pendant 14 jours)
 
-- Se connecter sur https://www.elastic.co/fr/cloud/
-- Cliquer sur **Démarrez un essai gratuit**
-<img src="img/escloud1.png" alt="drawing" width="300"/>
+- Se connecter sur https://www.elastic.co/fr/
+- Cliquer sur **Essai gratuit**
+<img src="img/escloud1.png" alt="drawing" width="600"/>
 
-- Sur l'écran suivant, renseignez votre email et un mot de passe puis cliquez sur **Start free trial**. Cliquez ensuite sur le lien de vérification dans l'email de confirmation reçu.
-<img src="img/escloud2.png" alt="drawing" width="350"/>
+- Sur l'écran suivant, renseignez un email et un mot de passe puis cliquez sur **Start free trial** ou connectez-vous avec votre compte Microsoft IPI en cliquant sur le bouton Microsoft.
+<img src="img/escloud1.5.png" alt="drawing" width="500"/>
 
-- Vous serez ensuite directement connecté sur Elastic Cloud. Vous pouvez maintenant cliquer sur **Start your free trial**
-<img src="img/escloud4.png" alt="drawing" width="900"/>
+- Cliquez ensuite sur le lien de vérification dans l'email de confirmation reçu.
+<img src="img/escloud2.png" alt="drawing" width="500"/>
 
-- Sélectionnez **General purpose**, laissez tous les paramètres par défaut. Donnez le nom **nomfamille_elastic** à votre déploiement puis cliquez sur **Create deployment**. Gardez bien le nom d'utilisateur et le mot de passe affiché à l'écran.
+- Votre déploiement Elastic s'apprête à être créé. Il vous faut juste lui donner un nom. Donnez le nom **nomfamille_elastic** à votre déploiement puis cliquez sur **Create deployment**. 
+<img src="img/escloud3.png" alt="drawing" width="900"/>
+
+- Gardez bien le nom d'utilisateur et le mot de passe affiché à l'écran et attendez que le message **Your deployment is ready!** s'affiche avant de cliquer sur **Continue**
+<img src="img/escloud4.png" alt="drawing" width="500"/>
+
+- Une fois le déploiement créé, vous devriez arriver sur cet écran.
 <img src="img/escloud5.png" alt="drawing" width="900"/>
 
-- Attendez le temps que le déploiement soit créé, vous devriez arriver sur cet écran.
-<img src="img/escloud6.png" alt="drawing" width="900"/>
+- Ouvrez le menu à l'aide du bouton en haut à gauche et cliquer sur le bouton **Manage this deployment**.
+<img src="img/escloud6.png" alt="drawing" width="500"/>
 
+- Descendez jusqu'à la section **Instances** cliquer sur le bouton avec les 3 points pour sélectionner **Edit configuration**
+<img src="img/escloud7.png" alt="drawing" width="900"/>
 
-- En bas à gauche de l'écran, dans la section **Instances** cliquer sur le bouton avec les 3 points pour sélectionner **Edit configuration**, puis **Edit elasticsearch.yml** dans la page suivante afin d'ajouter dans la zone de texte révélée les lignes suivantes avant de cliquer sur **Save** tout en bas et attendez quelques minutes que les changements soient appliqués : 
+- Puis cliquez sur **Edit user settings and plugins** 
+<img src="img/escloud8.png" alt="drawing" width="900"/>
+
+- Ajoutez dans la zone de texte révélée les lignes suivantes avant de cliquer sur **Back** puis **Save** tout en bas et enfin **Confirm** et attendez quelques minutes que les changements soient appliqués : 
 ```yaml
 http.cors.enabled: true
 http.cors.allow-origin: "*"
 http.cors.allow-credentials: true
 http.cors.allow-headers: "X-Requested-With, Content-Type, Content-Length, Authorization"
 ```
-<img src="img/escloud7.png" alt="drawing" width="350"/>
-<img src="img/escloud8.png" alt="drawing" width="900"/>
+<img src="img/escloud9.png" alt="drawing" width="500"/>
 
 ### Logstash
 
