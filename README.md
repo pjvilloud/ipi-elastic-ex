@@ -23,7 +23,7 @@ Voici la marche à suivre pour mettre en place votre suite Elastic (essai gratui
 <img src="img/escloud3.png" alt="drawing" width="900"/>
 
 - Gardez bien le nom d'utilisateur et le mot de passe affiché à l'écran et attendez que le message **Your deployment is ready!** s'affiche avant de cliquer sur **Continue**
-<img src="img/escloud4.png" alt="drawing" width="500"/>
+<img src="img/escloud4.png" alt="drawing" width="900"/>
 
 - Une fois le déploiement créé, vous devriez arriver sur cet écran.
 <img src="img/escloud5.png" alt="drawing" width="900"/>
