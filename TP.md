@@ -100,7 +100,7 @@
 
 1. Récupérer le mapping de l'index `depute` et constater l'ajout du champ avec le type automatiquement défini.
 
-1. Indexer en masse tous les députés en utilisant le fichier `nosdeputes.fr_deputes_2020-06-16.bulk.json`. Analyser la réponse de votre requête pour vérifier s'il y a des erreurs. Essayer de récupérer en une requête les documents d'id `578`, `420`, `327`, `246`, `119` et `12`
+1. Indexer en masse tous les députés en utilisant le fichier `nosdeputes.fr_deputes_en_mandat_2022-03-05.json`. Analyser la réponse de votre requête pour vérifier s'il y a des erreurs. Essayer de récupérer en une requête les documents d'id `578`, `420`, `329`, `246`, `118` et `12`
 
 ## Recherche stricte
 
@@ -114,14 +114,14 @@
 
 1. Effectuer une recherche renvoyant les députés de la circonscription de la Loire.
 
-1. Effectuer une recherche renvoyant les députés de la circonscription de la Loire ou de l'Isère. ~~Analyser la réponse et essayer de trouver la différence par rapport à la question 4.~~
+1. Effectuer une recherche renvoyant les députés de la circonscription de la Loire ou de l'Isère.
 
 1. Reprendre l'énoncé de la question 2 mais chercher uniquement dans le nom ou le prénom du député.
 
 1. Rechercher les députés qui ont au moins une femme parmi leur collaborateurs
 
 1. Rechercher les députés en vert sur l'image suivante : 
-	<img src="img/numhemicycle.jpg" alt="drawing" width="900"/>
+<img src="img/numhemicycle.jpg" alt="drawing" width="900"/>
 
 1. Rechercher les députés sortants
 
