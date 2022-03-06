@@ -213,37 +213,19 @@
 
 ## Pré-requis
 
-Récupérer (Fork ou Download) et ouvrir le projet Java situé à l'url https://github.com/pjvilloud/deputes-elastic-batch avec votre IDE. Ce projet contient 2 batchs Spring batch : 
-
-1. Intègre les fichiers JSON de nosdeputes.fr de type *synthèse* qui regroupe l'activité des 12 derniers mois des députés actifs
-
-1. Intègre les fichiers JSON de nosdeputes.fr de type *activite* qui regroupe l'activité d'un mois donné pour tous les députés.
-
-	Ce projet possède également une application web permettant de lancer les batchs et d'accéder en lecture à l'index Elasticsearch `depute`. Voir `BatchController`.
-
-	Modifier la classe BatchApplication en indiquant votre serveur Elasticsearch et votre user/mot de passe
-
-	```java
-	@Bean
-	public RestHighLevelClient client() {
-		ClientConfiguration clientConfiguration
-				= ClientConfiguration.builder()
-				.connectedTo("elasticsearch.eu-west-2.aws.cloud.es.io:9243")
-				.usingSsl()
-				.withBasicAuth("elastic", "password")
-				.build();
-
-	return RestClients.create(clientConfiguration).rest();
-	}
-	```
+Récupérer (Fork ou Download) et ouvrir le projet Java situé à l'url https://github.com/pjvilloud/deputes-elastic-batch avec votre IDE. 
 
 ## FileBeat
 
-L'application web Java stocke les logs Tomcat dans le répertoire `tomcat/logs/`. Installer, configurer et lancer le service FileBeats grâce à https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-getting-started.html (au moins jusqu'à l'étape 5) pour qu'il envoie les logs Tomcat à ElasticSearch. 
+Nous allons intégré les logs Tomcat qui seront dans le répertoire `tomcat/logs`. Installer, configurer et lancer le service FileBeats grâce à https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-getting-started.html (au moins jusqu'à l'étape 5) pour qu'il envoie les logs Tomcat à ElasticSearch (tous les fichiers de logs qui seront dans le dossier `tomcat/logs`. 
 
-Lancer l'application `BatchsApplication` et exécuter dans un navigateur ou dans PostMan une requête `GET` sur l'url `localhost:8080/general?filename=nosdeputes.fr_synthese_2020-06-23.json`. Vérifier la bonne exécution du batch 
+Lancer l'application `BatchsApplication` et exécuter dans un navigateur ou dans PostMan une requête `GET` sur l'url `localhost:8080/up`.
 
 Vérifier dans Kibana (Dashboards spécialisés Apache Filebeat) que les données sont bien visibles.
+
+Puis s'occuper du fichier `access_log_20220226-135321.log` situé à la racine de ce repository en l'ajoutant dans le répertoire `tomcat/logs` de votre projet. Puis si cela fonctionne, télécharger puis décompresser le fichier `access_log_20220226-135643.zip` situé lui aussi à la racine et l'ajouter lui aussi dans le répertoire `tomcat/logs` de votre projet.
+
+Répondre ensuite aux questions suivantes
 
 ## MetricsBeat
 
@@ -255,26 +237,33 @@ Suivre la procédure d'installation de HeartBeat sur https://www.elastic.co/guid
 
 ## Logstash 
 
-Paramétrer Filebeat (dans un nouveau pipeline) pour qu'il récupère les logs situés dans le fichier `info.log` pour les envoyer à Logstash. 
-Paramétrer Logstash pour qu'il récupère les données issues de FileBeat et envoie dans Elasticsearch les logs parsés (utiliser un filtre `dissect` https://www.elastic.co/guide/en/logstash/current/plugins-filters-dissect.html).
+Paramétrer Logstash pour qu'il récupère les données issues du fichier `info-exemple.log` situé à la racine de ce repository et envoie dans Elasticsearch les logs parsés (utiliser un filtre `dissect` https://www.elastic.co/guide/en/logstash/current/plugins-filters-dissect.html).
 
 Une ligne de log ressemble à 
-`2020-06-17 08:19:36 - INFO  - importDeputesActiviteFileToES:1:WRITE_DEPUTES_ACTIVITE:50`
+`2022-03-06 11:31:01 - WARN - anonymous:Identifiant ou mot de passe incorrect/emilie.gérard/****`
 
 Le document créé sera sous la forme : 
 
 ```json
 {
-    "ts": "2020-06-17 08:19:36",
-    "level": "INFO",
-    "jobName": "importDeputesActiviteFileToES",
-    "jobId": "1",
-    "logKey": "WRITE_DEPUTES_ACTIVITE",
-    "value": "50"
+    "ts": "2022-03-06 11:31:01",
+    "level": "WARN",
+    "user": "anonymous",
+    "value": "Identifiant ou mot de passe incorrect/emilie.gérard/****"
 }
 ```
 
-Lancer votre application
+Répondre ensuite aux questions suivantes : 
+
+- Un des utilisateurs ne peut plus se connecter. Il a voulu s'identifier vers 2h20 et depuis ne peut plus se connecter ? Que s'est-il passé ?
+
+- Reconstituer les actions qu'a effectué Isabelle Durant
+
+- Identifier les identifiants de députés qui n'existent pas
+
+- Regarder sur quelle période la base de données a été parfois indisponible
+
+- Identifier les utilisateurs ayant tenté d'effectuer des opérations interdites
 
 Créer l'index `activite` avec le mapping suivant : 
 
@@ -293,45 +282,6 @@ Créer l'index `activite` avec le mapping suivant :
     }
 }
 ```
-
-Exécuter un à un les appels suivants : en attendant bien la fin de chaque requête avant de lancer la suivante
-
-- http://localhost:8080/activite?filename=nosdeputes.fr_201706_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201707_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201708_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201709_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201710_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201711_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201712_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201801_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201802_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201803_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201804_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201805_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201806_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201807_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201808_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201809_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201810_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201811_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201812_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201901_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201902_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201903_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201904_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201905_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201906_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201907_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201908_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201909_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201910_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201911_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_201912_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_202001_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_202002_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_202003_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_202004_stats_deputes.json
-- http://localhost:8080/activite?filename=nosdeputes.fr_202005_stats_deputes.json
 
 # Kibana
 
