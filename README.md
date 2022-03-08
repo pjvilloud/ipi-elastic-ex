@@ -46,6 +46,8 @@ http.cors.allow-headers: "X-Requested-With, Content-Type, Content-Length, Author
 ```
 <img src="img/escloud9.png" alt="drawing" width="900"/>
 
+### ATTENTION, TOUS LES LOGICIELS SUIVANTS SONT A INSTALLER EN VERSION 7.17.1 ET NON LA DERNIERE 8.1
+
 ### Logstash
 
 Télécharger Logstash à l'adresse https://www.elastic.co/fr/downloads/logstash et décompresser l'archive sur votre machine (vous pouvez créer un répertoire `elastic` où vous mettrez tous les logiciels de ce tp)
