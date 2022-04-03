@@ -56,8 +56,6 @@ Télécharger Logstash à l'adresse https://www.elastic.co/fr/downloads/logstash
 
 Télécharger FileBeat à l'adresse https://www.elastic.co/fr/downloads/beats/filebeat et décompresser l'archive sur votre machine 
 
-Procédure complète d'installation : https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation.html
-
 ### HeartBeat
 
 Télécharger HeartBeat à l'adresse https://www.elastic.co/fr/downloads/beats/heartbeat et décompresser l'archive sur votre machine
