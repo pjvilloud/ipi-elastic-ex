@@ -50,16 +50,16 @@ http.cors.allow-headers: "X-Requested-With, Content-Type, Content-Length, Author
 
 ### Logstash
 
-Télécharger Logstash à l'adresse https://www.elastic.co/fr/downloads/logstash et décompresser l'archive sur votre machine (vous pouvez créer un répertoire `elastic` où vous mettrez tous les logiciels de ce tp)
+Télécharger Logstash à l'adresse https://www.elastic.co/fr/downloads/past-releases/logstash-7-17-1 et décompresser l'archive sur votre machine (vous pouvez créer un répertoire `elastic` où vous mettrez tous les logiciels de ce tp)
 
 ### FileBeat
 
-Télécharger FileBeat à l'adresse https://www.elastic.co/fr/downloads/beats/filebeat et décompresser l'archive sur votre machine 
+Télécharger FileBeat à l'adresse https://www.elastic.co/fr/downloads/past-releases/filebeat-7-17-1 et décompresser l'archive sur votre machine 
 
 ### HeartBeat
 
-Télécharger HeartBeat à l'adresse https://www.elastic.co/fr/downloads/beats/heartbeat et décompresser l'archive sur votre machine
+Télécharger HeartBeat à l'adresse https://www.elastic.co/fr/downloads/past-releases/heartbeat-7-17-1 et décompresser l'archive sur votre machine
 
 ### MetricBeat
 
-Télécharger MetricBeat à l'adresse https://www.elastic.co/fr/downloads/beats/metricbeat et décompresser l'archive sur votre machine : 
+Télécharger MetricBeat à l'adresse https://www.elastic.co/fr/downloads/past-releases/metricbeat-7-17-1 et décompresser l'archive sur votre machine : 
